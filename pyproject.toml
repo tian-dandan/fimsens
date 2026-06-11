@@ -1,0 +1,88 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "fimsense"
+version = "0.1.0"
+description = "Flood Inundation Mapping toolset: SAR/optical download, raw FIM, commission-error filter, and flood grow/depth estimation."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.9"
+authors = [
+    { name = "Dan Tian", email = "tiandan.geo@gmail.com" },
+]
+keywords = ["flood", "SAR", "remote sensing", "inundation", "hydrology", "GIS"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering :: GIS",
+    "Topic :: Scientific/Engineering :: Hydrology",
+]
+
+# Core dependencies (pip-installable)
+# NOTE: GDAL/osgeo must be installed separately via conda:
+#   conda install -c conda-forge gdal
+dependencies = [
+    "numpy>=1.23",
+    "scipy>=1.9",
+    "scikit-image>=0.19",
+    "scikit-learn>=1.1",
+    "rasterio>=1.3",
+    "geopandas>=0.12",
+    "shapely>=2.0",
+    "pandas>=1.5",
+    "opencv-python-headless>=4.7",
+    "tqdm>=4.64",
+    "pyproj>=3.4",
+]
+
+[project.optional-dependencies]
+# Google Earth Engine download tools
+gee = [
+    "earthengine-api>=0.1.370",
+    "geemap>=0.28",
+    "ipywidgets>=8.0",
+]
+# Matplotlib visualisation (plot_predict_map)
+viz = [
+    "matplotlib>=3.6",
+]
+# Numba JIT backend for regionGrow (much faster on large images)
+numba = [
+    "numba>=0.57",
+]
+# Install everything
+all = [
+    "fimsense[gee,viz,numba]",
+]
+# Development tools
+dev = [
+    "pytest>=7",
+    "pytest-cov",
+    "black",
+    "ruff",
+    "build",
+    "twine",
+]
+
+[project.urls]
+Homepage = "https://github.com/tian-dandan/fimsense"
+Repository = "https://github.com/tian-dandan/fimsense"
+Issues = "https://github.com/tian-dandan/fimsense/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["fimsense"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.black]
+line-length = 100
+target-version = ["py39"]
