@@ -1,0 +1,51 @@
+cff-version: 1.2.0
+title: "FIMsens: a modular multi-sensor toolset for flood extent and depth mapping"
+message: "If you use this software, please cite it as below."
+type: software
+authors:
+  - family-names: Tian
+    given-names: Dan
+    email: tiandan.geo@gmail.com
+    affiliation: University of Alabama
+repository-code: "https://github.com/tian-dandan/fimsens"
+license: MIT
+version: 0.2.0
+date-released: "2026-08-18"
+keywords:
+  - flood mapping
+  - flood inundation
+  - synthetic aperture radar
+  - Sentinel-1
+  - remote sensing
+  - water surface elevation
+  - flood depth
+abstract: >-
+  FIMsens is a Python toolset that turns incomplete and partly unreliable
+  satellite observations into hydrologically consistent flood extent and depth
+  information. Rather than treating flood mapping as a single water-classification
+  step, it applies a progressive flood-evidence refinement framework: discover
+  suitable observations, detect directly observable floodwater with Seeded Local
+  Adaptive Thresholding (SLAT), assess which detected flood objects are physically
+  plausible with the Flood Object Reliability Filter (FOR-Filter), then reconstruct
+  omitted inundation and estimate depth from topography with RS-FloodXDepth.
+  Directly observed and reconstructed inundation are kept as separate classes, and
+  intermediate outputs are preserved, so users can trace how a final map was
+  produced.
+
+# ── Once a Zenodo DOI exists, uncomment and fill in ──────────────────────────
+# doi: "10.5281/zenodo.XXXXXXX"
+# identifiers:
+#   - type: doi
+#     value: "10.5281/zenodo.XXXXXXX"
+#     description: "Archived release"
+#
+# ── Once the paper is published, add it as the preferred citation ────────────
+# preferred-citation:
+#   type: article
+#   authors:
+#     - family-names: Tian
+#       given-names: Dan
+#   title: ""
+#   journal: ""
+#   year:
+#   doi: ""

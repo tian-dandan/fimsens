@@ -37,9 +37,9 @@ coverage.xml
 *.cover
 .hypothesis/
 
-# Jupyter Notebook
+# Jupyter
 .ipynb_checkpoints
-*.ipynb
+# NOTE: do NOT ignore *.ipynb — examples/*.ipynb are primary documentation.
 
 # Testing
 .pytest_cache/
@@ -79,3 +79,10 @@ service_account*.json
 
 # Logs
 *.log
+
+# Conda
+.conda/
+
+# Local scratch
+_to_delete/
+scratch/

@@ -3,8 +3,8 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "fimsense"
-version = "0.1.0"
+name = "fimsens"
+version = "0.2.0"
 description = "Flood Inundation Mapping toolset: SAR/optical download, raw FIM, commission-error filter, and flood grow/depth estimation."
 readme = "README.md"
 license = { text = "MIT" }
@@ -48,6 +48,8 @@ gee = [
     "earthengine-api>=0.1.370",
     "geemap>=0.28",
     "ipywidgets>=8.0",
+    "ipyleaflet>=0.19",
+    "jupyterlab-widgets>=3.0",
 ]
 # Matplotlib visualisation (plot_predict_map)
 viz = [
@@ -57,9 +59,19 @@ viz = [
 numba = [
     "numba>=0.57",
 ]
-# Install everything
+# Desktop GUI.
+# NOTE: the GUI is NOT part of the installed package. It lives in gui/fimsens_gui.py
+# in the repository and is run directly (`python gui/fimsens_gui.py`) against an
+# installed fimsens. This group exists so you can pull in its Qt dependency:
+#   pip install fimsens[gui]
+gui = [
+    "PyQt6>=6.4",
+]
+# Install everything that ships inside the package.
+# 'gui' is deliberately excluded — see the note above; installing PyQt6 would not
+# give you a GUI, because no GUI module is packaged.
 all = [
-    "fimsense[gee,viz,numba]",
+    "fimsens[gee,viz,numba]",
 ]
 # Development tools
 dev = [
@@ -72,12 +84,12 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/tian-dandan/fimsense"
-Repository = "https://github.com/tian-dandan/fimsense"
-Issues = "https://github.com/tian-dandan/fimsense/issues"
+Homepage = "https://github.com/tian-dandan/fimsens"
+Repository = "https://github.com/tian-dandan/fimsens"
+Issues = "https://github.com/tian-dandan/fimsens/issues"
 
 [tool.hatch.build.targets.wheel]
-packages = ["fimsense"]
+packages = ["fimsens"]
 
 [tool.ruff]
 line-length = 100
